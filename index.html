@@ -77,7 +77,7 @@
     <h1 style="font-size: 12em; margin-bottom: 50px;font-family: 'Sacramento'; font-weight: lighter; background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red); -webkit-background-clip: text; color: transparent; animation: rainbowAnimation 2s infinite linear;">Hey, Carla</h1>
    
    <!-- HTML !-->
-<button class="button-49" role="button" onclick="enterWebsite()">Enter</button>
+<button class="button-49" role="button"  id="playButton" onclick="enterWebsite()">Enter</button>
 
  
 </div>
@@ -111,13 +111,16 @@
 </audio>
 
 <script>
-    // Autoplay background audio using JavaScript
     document.addEventListener('DOMContentLoaded', function() {
         var audio = document.getElementById('backgroundAudio');
-        if (audio) {
-            audio.play().catch(function(error) {
-                // Autoplay was prevented, handle the error
-                console.error(error);
+        var playButton = document.getElementById('playButton');
+
+        if (audio && playButton) {
+            playButton.addEventListener('click', function() {
+                audio.play().catch(function(error) {
+                    // Autoplay was prevented, handle the error
+                    console.error(error);
+                });
             });
         }
     });
@@ -160,7 +163,7 @@
 
             // Enable the button again
             button.disabled = false;
-        }, 1000); // 1000 milliseconds = 1 second
+        }, 800); // 1000 milliseconds = 1 second
     }
 </script>
 </body>
